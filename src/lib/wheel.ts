@@ -464,7 +464,8 @@ export default class LuckyWheel extends Lucky {
    * @param num 记录帧动画执行多少次
    */
   private run (num: number = 0): void {
-    const { rAF, prizeFlag, prizeDeg, rotateDeg, _defaultConfig } = this
+    const { rAF, prizeFlag, prizeDeg, rotateDeg, _defaultConfig } = this    
+    if (prizeFlag === -1) return (this.startTime = 0, void 0)
     let interval = Date.now() - this.startTime
     // 先完全旋转, 再停止
     if (interval >= _defaultConfig.accelerationTime && prizeFlag !== void 0) {
